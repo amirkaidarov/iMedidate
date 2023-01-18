@@ -16,6 +16,8 @@
 		0355DCF62977710000CC90B0 /* PlaybackControllerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCF52977710000CC90B0 /* PlaybackControllerButton.swift */; };
 		0355DCF9297862A900CC90B0 /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCF8297862A900CC90B0 /* MeditationViewModel.swift */; };
 		0355DCFC297863FF00CC90B0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCFB297863FF00CC90B0 /* Extensions.swift */; };
+		0355DCFE297866B000CC90B0 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCFD297866B000CC90B0 /* AudioManager.swift */; };
+		0355DD0129788AA000CC90B0 /* ice&fire.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 0355DD0029788AA000CC90B0 /* ice&fire.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		0355DCF52977710000CC90B0 /* PlaybackControllerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControllerButton.swift; sourceTree = "<group>"; };
 		0355DCF8297862A900CC90B0 /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
 		0355DCFB297863FF00CC90B0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0355DCFD297866B000CC90B0 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		0355DCFF29786AF200CC90B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0355DD0029788AA000CC90B0 /* ice&fire.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "ice&fire.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +66,7 @@
 		0355DCE029776C9B00CC90B0 /* iMedidate */ = {
 			isa = PBXGroup;
 			children = (
+				0355DCFF29786AF200CC90B0 /* Info.plist */,
 				0355DCFA297863F700CC90B0 /* Helpers */,
 				0355DCF4297770F500CC90B0 /* Components */,
 				0355DCF72978629C00CC90B0 /* ViewModels */,
@@ -68,6 +74,7 @@
 				0355DCE129776C9B00CC90B0 /* iMedidateApp.swift */,
 				0355DCE329776C9B00CC90B0 /* ContentView.swift */,
 				0355DCE529776C9B00CC90B0 /* Assets.xcassets */,
+				0355DD0029788AA000CC90B0 /* ice&fire.mp3 */,
 				0355DCE729776C9B00CC90B0 /* Preview Content */,
 			);
 			path = iMedidate;
@@ -110,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				0355DCFB297863FF00CC90B0 /* Extensions.swift */,
+				0355DCFD297866B000CC90B0 /* AudioManager.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -172,6 +180,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0355DD0129788AA000CC90B0 /* ice&fire.mp3 in Resources */,
 				0355DCE929776C9B00CC90B0 /* Preview Assets.xcassets in Resources */,
 				0355DCE629776C9B00CC90B0 /* Assets.xcassets in Resources */,
 			);
@@ -186,6 +195,7 @@
 			files = (
 				0355DCE429776C9B00CC90B0 /* ContentView.swift in Sources */,
 				0355DCF029776D7A00CC90B0 /* MeditationView.swift in Sources */,
+				0355DCFE297866B000CC90B0 /* AudioManager.swift in Sources */,
 				0355DCF62977710000CC90B0 /* PlaybackControllerButton.swift in Sources */,
 				0355DCE229776C9B00CC90B0 /* iMedidateApp.swift in Sources */,
 				0355DCF9297862A900CC90B0 /* MeditationViewModel.swift in Sources */,
@@ -322,11 +332,13 @@
 				DEVELOPMENT_TEAM = QV6YG7T84D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iMedidate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -351,11 +363,13 @@
 				DEVELOPMENT_TEAM = QV6YG7T84D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = iMedidate/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

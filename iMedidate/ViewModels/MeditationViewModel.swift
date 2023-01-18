@@ -18,7 +18,7 @@ struct Meditation {
     static let data = Meditation(title: "1 Minute Relaxing Meditation",
                                  description: "Calm your mind and dive into the sea of your inner thoughts",
                                  duration: 70,
-                                 track: "meditation1",
+                                 track: "ice&fire",
                                  image: "image-guy")
 }
 

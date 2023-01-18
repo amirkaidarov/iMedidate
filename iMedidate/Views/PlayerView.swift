@@ -12,6 +12,12 @@ struct PlayerView: View {
     @State private var value : Double = 0.0
     @Environment(\.presentationMode) var presentatinoMode
     var meditationVM : MeditationViewModel
+    @EnvironmentObject var audioManager : AudioManager
+    @State private var isEditing : Bool = false
+    
+    let timer = Timer
+        .publish(every: 0.5, on: .main, in: .common)
+        .autoconnect()
     
     var body: some View {
         ZStack {
@@ -27,16 +33,7 @@ struct PlayerView: View {
                 .ignoresSafeArea()
             
             VStack (spacing: 32){
-                HStack {
-                    Button {
-                        presentatinoMode.wrappedValue.dismiss()
-                    } label: {
-                        Image(systemName: "xmark.circle.fill")
-                            .font(.system(size: 36))
-                            .foregroundColor(.white)
-                    }
-                    Spacer()
-                }
+                cancelButton
                 
                 Text(meditationVM.meditation.title)
                     .font(.title)
@@ -44,44 +41,92 @@ struct PlayerView: View {
                 
                 Spacer()
                 
-                VStack (spacing: 5) {
-                    Slider(value: $value,
-                           in: 0...60)
-                    .accentColor(.white)
-                    
-                    HStack {
-                        Text("0:00")
-                        Spacer()
-                        Text("1:00")
-                    }
-                    .font(.caption)
-                    .foregroundColor(.white)
-                }
+                audioSlider
                 
-                HStack {
-                    PlaybackControllerButton(systemName: "repeat") {
-                        //
-                    }
-                    Spacer()
-                    PlaybackControllerButton(systemName: "gobackward.10") {
-                        //
-                    }
-                    Spacer()
-                    PlaybackControllerButton(systemName: "play.fill", fontSize: 44) {
-                        //
-                    }
-                    Spacer()
-                    PlaybackControllerButton(systemName: "goforward.10") {
-                        //
-                    }
-                    Spacer()
-                    PlaybackControllerButton(systemName: "stop.fill") {
-                        //
-                    }
-                }
+                optionButtons
                 
             }
             .padding(20)
+        }
+        .onAppear {
+            audioManager.startPlayer(track: meditationVM.meditation.track)
+        }
+        .onReceive(timer) { _ in
+            guard let player = audioManager.player, !isEditing else { return }
+            
+            value = player.currentTime
+        }
+    }
+}
+
+extension PlayerView {
+    private var cancelButton : some View {
+        HStack {
+            Button {
+                audioManager.stop()
+                presentatinoMode.wrappedValue.dismiss()
+            } label: {
+                Image(systemName: "xmark.circle.fill")
+                    .font(.system(size: 36))
+                    .foregroundColor(.white)
+            }
+            Spacer()
+        }
+    }
+    
+    @ViewBuilder private var audioSlider : some View {
+        if let player = audioManager.player {
+            VStack (spacing: 5) {
+                Slider(value: $value,
+                       in: 0...player.duration,
+                       onEditingChanged: { editing in
+                    isEditing = editing
+                    if !editing {
+                        player.currentTime = value
+                    }
+                })
+                .accentColor(.white)
+                
+                HStack {
+                    Text(DateComponentsFormatter.positional.string(from: player.currentTime) ?? "0:00")
+                    Spacer()
+                    Text(DateComponentsFormatter.positional.string(from: player.duration - player.currentTime) ?? "0:00")
+                }
+                .font(.caption)
+                .foregroundColor(.white)
+            }
+        }
+    }
+    
+    @ViewBuilder private var optionButtons : some View {
+        if let player = audioManager.player {
+            HStack {
+                let color : Color = audioManager.isLooping ? .teal : .white
+                PlaybackControllerButton(systemName: "repeat",
+                                         color: color) {
+                    audioManager.toggleLoop()
+                }
+                Spacer()
+                PlaybackControllerButton(systemName: "gobackward.10") {
+                    player.currentTime -= 10
+                }
+                Spacer()
+                PlaybackControllerButton(systemName: audioManager.isPlaying
+                                         ? "pause.circle.fill"
+                                         : "play.circle.fill",
+                                         fontSize: 44) {
+                    audioManager.playPause()
+                }
+                Spacer()
+                PlaybackControllerButton(systemName: "goforward.10") {
+                    player.currentTime += 10
+                }
+                Spacer()
+                PlaybackControllerButton(systemName: "stop.fill") {
+                    audioManager.stop()
+                    presentatinoMode.wrappedValue.dismiss()
+                }
+            }
         }
     }
 }
@@ -90,5 +135,6 @@ struct PlayerView_Previews: PreviewProvider {
     static let meditationVM = MeditationViewModel(meditation: Meditation.data)
     static var previews: some View {
         PlayerView(meditationVM: meditationVM)
+            .environmentObject(AudioManager())
     }
 }
