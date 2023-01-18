@@ -11,10 +11,11 @@ struct PlayerView: View {
     
     @State private var value : Double = 0.0
     @Environment(\.presentationMode) var presentatinoMode
- 
+    var meditationVM : MeditationViewModel
+    
     var body: some View {
         ZStack {
-            Image("image-guy")
+            Image(meditationVM.meditation.image)
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width)
@@ -37,7 +38,7 @@ struct PlayerView: View {
                     Spacer()
                 }
                 
-                Text("1 Minute Relaxing Meditation")
+                Text(meditationVM.meditation.title)
                     .font(.title)
                     .foregroundColor(.white)
                 
@@ -86,7 +87,8 @@ struct PlayerView: View {
 }
 
 struct PlayerView_Previews: PreviewProvider {
+    static let meditationVM = MeditationViewModel(meditation: Meditation.data)
     static var previews: some View {
-        PlayerView()
+        PlayerView(meditationVM: meditationVM)
     }
 }

@@ -14,6 +14,8 @@
 		0355DCF029776D7A00CC90B0 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCEF29776D7A00CC90B0 /* MeditationView.swift */; };
 		0355DCF229776F8F00CC90B0 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCF129776F8F00CC90B0 /* PlayerView.swift */; };
 		0355DCF62977710000CC90B0 /* PlaybackControllerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCF52977710000CC90B0 /* PlaybackControllerButton.swift */; };
+		0355DCF9297862A900CC90B0 /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCF8297862A900CC90B0 /* MeditationViewModel.swift */; };
+		0355DCFC297863FF00CC90B0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0355DCFB297863FF00CC90B0 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		0355DCEF29776D7A00CC90B0 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		0355DCF129776F8F00CC90B0 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
 		0355DCF52977710000CC90B0 /* PlaybackControllerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackControllerButton.swift; sourceTree = "<group>"; };
+		0355DCF8297862A900CC90B0 /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
+		0355DCFB297863FF00CC90B0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,10 +61,12 @@
 		0355DCE029776C9B00CC90B0 /* iMedidate */ = {
 			isa = PBXGroup;
 			children = (
+				0355DCFA297863F700CC90B0 /* Helpers */,
 				0355DCF4297770F500CC90B0 /* Components */,
+				0355DCF72978629C00CC90B0 /* ViewModels */,
+				0355DCF329776F9400CC90B0 /* Views */,
 				0355DCE129776C9B00CC90B0 /* iMedidateApp.swift */,
 				0355DCE329776C9B00CC90B0 /* ContentView.swift */,
-				0355DCF329776F9400CC90B0 /* Views */,
 				0355DCE529776C9B00CC90B0 /* Assets.xcassets */,
 				0355DCE729776C9B00CC90B0 /* Preview Content */,
 			);
@@ -90,6 +96,22 @@
 				0355DCF52977710000CC90B0 /* PlaybackControllerButton.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		0355DCF72978629C00CC90B0 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0355DCF8297862A900CC90B0 /* MeditationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0355DCFA297863F700CC90B0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0355DCFB297863FF00CC90B0 /* Extensions.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,7 +188,9 @@
 				0355DCF029776D7A00CC90B0 /* MeditationView.swift in Sources */,
 				0355DCF62977710000CC90B0 /* PlaybackControllerButton.swift in Sources */,
 				0355DCE229776C9B00CC90B0 /* iMedidateApp.swift in Sources */,
+				0355DCF9297862A900CC90B0 /* MeditationViewModel.swift in Sources */,
 				0355DCF229776F8F00CC90B0 /* PlayerView.swift in Sources */,
+				0355DCFC297863FF00CC90B0 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
